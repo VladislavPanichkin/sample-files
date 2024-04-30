@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <h6 class="header">Split by Line of Business or Scenario</h6>
+  <ag-grid-angular
+    [gridOptions]="gridOptions"
+    [modules]="modules"
+    [rowData]="splits$ | async"
+    [style.height.px]="470"
+    class="ag-theme-material grid-override_overflow-hidden grid-override_delete-row-button-visible-on-hover grid-override_border-on-row-hover grid-override_fix-platypus-input-height"
+  >
+  </ag-grid-angular>
+  <div class="footer">
+    <mat-divider></mat-divider>
+    <div class="buttons-container">
+      <button
+        mat-button
+        base-button
+        color="primary"
+        data-cy="cancelBtn"
+        class="cancel-btn"
+        (click)="close()"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        base-button
+        color="primary"
+        data-cy="updateBtn"
+        [disabled]="!splitsTouched || isUpdateInProgress"
+        (click)="onSave()"
+      >
+        <span>Update</span>
+        <mat-icon class="button-spinner" *ngIf="isUpdateInProgress">
+          <mat-spinner color="accent" diameter="20"></mat-spinner>
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

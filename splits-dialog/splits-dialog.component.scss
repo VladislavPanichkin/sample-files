@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: end;
+}
+
+.cancel-btn {
+  margin-right: 17px;
+}
+
+mat-divider {
+  margin-bottom: 16px;
+}
+
+.footer {
+  margin-top: auto;
+}
