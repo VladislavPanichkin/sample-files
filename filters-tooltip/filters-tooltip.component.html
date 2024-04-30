@@ -1,0 +1,22 @@
+<div [customTooltip]="entries.length ? tooltipTable : null">
+  <ng-content></ng-content>
+</div>
+
+<ng-template #tooltipTable>
+  <table class="tooltip-table">
+    <tr class="tooltip-table__table-row tooltip-table__header-row">
+      <th class="tooltip-table__table-cell tooltip-table__header-cell">
+        Filter
+      </th>
+      <th class="tooltip-table__separator-cell"></th>
+      <th class="tooltip-table__table-cell tooltip-table__header-cell">
+        Value
+      </th>
+    </tr>
+    <tr class="tooltip-table__table-row" *ngFor="let entry of entries">
+      <td class="tooltip-table__table-cell">{{ entry.key }}</td>
+      <th class="tooltip-table__separator-cell"></th>
+      <td class="tooltip-table__table-cell">{{ entry.value.join(', ') }}</td>
+    </tr>
+  </table>
+</ng-template>

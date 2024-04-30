@@ -1,0 +1,58 @@
+<mat-form-field
+  [hideRequiredMarker]="false"
+  [class.mat-form-field-invalid]="errors.length"
+  [class.mat-form-field-disabled]="isDisabled"
+  class="full-width mat-suffix-icon-override"
+  [class.mat-override_padding-small]="!!selectedGeoScopeOptions.length"
+  baseFormField="medium"
+>
+  <mat-label>
+    <span>Geographical Scope</span>
+    <span
+      *ngIf="isRequired"
+      class="mat-placeholder-required mat-form-field-required-marker"
+    >
+      *</span
+    >
+  </mat-label>
+  <mat-chip-list #chipList [disabled]="isDisabled">
+    <mat-chip
+      *ngFor="let geoLocation of selectedGeoScopeOptions"
+      [removable]="!isDisabled"
+      (removed)="removeGeoScopeOption(geoLocation)"
+    >
+      {{ geoLocation.name }}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input
+      #searchInput
+      [formControl]="searchControl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      (click)="openAutoComplete()"
+      (blur)="touch()"
+    />
+  </mat-chip-list>
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="selectGeoScopeOption($event)"
+  >
+    <mat-option
+      *ngFor="let geoLocation of filteredGeoScopeOptions"
+      [value]="geoLocation"
+    >
+      {{ geoLocation.name }}
+    </mat-option>
+  </mat-autocomplete>
+  <my-app-clear-icon
+    matSuffix
+    (click)="clear()"
+    *ngIf="showClearIcon"
+  ></my-app-clear-icon>
+  <my-app-form-error-icon
+    [errors]="errors"
+    matSuffix
+  ></my-app-form-error-icon>
+</mat-form-field>

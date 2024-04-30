@@ -1,0 +1,14 @@
+<div>
+  <mat-icon
+    [matTooltip]="iconTooltip"
+    (click)="togglePin()"
+    [ngClass]="{
+      'status-cell-icon__visible': iconVisible,
+      'status-cell-icon__hidden': !iconVisible,
+      'active-pin': iconVisible,
+      'material-icons-outlined': !iconVisible
+    }"
+    class="ag-icon-cell status-cell-icon"
+    >push_pin</mat-icon
+  >
+</div>

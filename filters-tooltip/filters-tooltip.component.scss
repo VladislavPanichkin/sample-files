@@ -1,0 +1,25 @@
+.tooltip-table {
+  text-align: left;
+  border-collapse: collapse;
+
+  &__table-row {
+    height: 40px;
+    border-top: 1px solid lightgrey;
+  }
+
+  &__header-row {
+    border: none;
+  }
+
+  &__table-cell {
+    margin-right: 10px;
+  }
+
+  &__header-cell {
+    font-weight: normal;
+  }
+
+  &__separator-cell {
+    width: 40px;
+  }
+}
